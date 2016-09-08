@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<post>
+  <title>Ufi test</title>
+  <slug>ufi-test</slug>
+  <author>demo</author>
+  <createddate>2016-08-25 12:12:49</createddate>
+  <modifieddate>2016-08-25 12:18:50</modifieddate>
+  <content>&lt;span style="color: rgb(0, 0, 0); font-family: &amp;quot;Open Sans&amp;quot;, Arial, sans-serif; font-size: 14px; line-height: 20px; text-align: justify;"&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut porttitor lacus ante, non accumsan nibh maximus quis. Duis dui mauris, commodo a tortor et, varius efficitur justo. Etiam vel ullamcorper nisl. Ut sollicitudin lacus diam, convallis condimentum massa egestas vitae. Aliquam justo ipsum, convallis in interdum sit amet, congue a dolor. Nam fringilla, dolor eu cursus suscipit, nunc quam cursus enim, ut eleifend lorem ante eu felis. Vestibulum risus sem, sagittis nec arcu quis, sodales blandit velit. Nullam vulputate lacinia nisi eu consequat. Vestibulum sed mauris convallis ex pulvinar hendrerit placerat eget ligula. Sed egestas sagittis nulla at sodales. Quisque et tincidunt nisl. Donec convallis enim a ultrices ultricies. Nunc quis tortor libero.&lt;br /&gt;&lt;/span&gt;&lt;img src="/posts/files/b89613c9-e614-4233-b487-0d66f4ea0b0c.png" alt=""  /&gt;&lt;span style="color: rgb(0, 0, 0); font-family: &amp;quot;Open Sans&amp;quot;, Arial, sans-serif; font-size: 14px; line-height: 20px; text-align: justify;"&gt;&lt;br /&gt;&lt;/span&gt;</content>
+  <ispublished>true</ispublished>
+  <categories></categories>
+  <comments>
+    <comment id="c9005981-89f1-498a-9684-afa05b2448a9">
+      <author>Ufic</author>
+      <email>ufi@test.com</email>
+      <website></website>
+      <ip></ip>
+      <userAgent></userAgent>
+      <createddate>2013-06-06 12:23</createddate>
+      <modifieddate>2013-06-06 14:23</modifieddate>
+      <content>Test</content>
+    </comment>
+  </comments>
+</post>
