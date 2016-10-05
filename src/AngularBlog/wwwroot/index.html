@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="app">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,6 +11,8 @@
     <link href="lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Theme CSS -->
     <link href="lib/css/clean-blog.css" rel="stylesheet">
+    <link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="lib/toastr/toastr.css" rel="stylesheet" />
     <!-- Custom Fonts -->
     <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
@@ -23,101 +25,48 @@
     <![endif]-->
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    Menu <i class="fa fa-bars"></i>
-                </button>
-                <a class="navbar-brand" href="index.html">Angular Blog</a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav ">
-                    <li>
-                        <a href="index.html">Home</a>
-                    </li>
-                    <li>
-                        <a href="about.html">About</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-    <!-- Page Header -->
-    <!-- Set your background image for this header on the line below. -->
-    <header class="intro-header" >
-    </header>
-    <!-- Main Content -->
-    <div class="container">
-        <div class="row">
-            <div class="col-md-10 ">
-                <div class="post-preview">
-                    <a href="post.html">
-                        <h2 class="post-title">
-                            Man must explore, and this is exploration at its greatest
-                        </h2>
-                        <h3 class="post-subtitle">
-                            Problems look mighty small from 150 miles up
-                        </h3>
-                    </a>
-                    <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on September 24, 2014</p>
-                </div>
-                <hr>
-                <!-- Pager -->
-                <ul class="pager">
-                    <li class="next">
-                        <a href="#">Older Posts &rarr;</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <hr>
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <ul class="list-inline text-center">
-                        <li>
-                            <a href="#">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                    </ul>
-                    <p class="copyright text-muted">Copyright &copy; Your Website 2016</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- jQuery -->
-    <!--<script src="lib/jquery/dist/jquery.min.js"></script>-->
+    <div ng-include="'app/layout/shell.html'"></div>
+
     <!-- Bootstrap Core JavaScript -->
     <!--<script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>-->
+    <!--vendor-->
+    <script src="lib/jquery/dist/jquery.js"></script>
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-route/angular-route.js"></script>
+    <script src="lib/angular-sanitize/angular-sanitize.js"></script>
+    <script src="app/app.module.js"></script>
+    <script src="lib/toastr/toastr.js"></script>
+    <!--endvendor-->
+    <!-- Main -->
+    <script src="app/app.module.js"></script>
+
+    <!-- Core -->
+    <script src="app/core/core.module.js"></script>
+    <script src="app/core/logger/logger.module.js"></script>
+    <script src="app/core/logger/logger.factory.js"></script>
+    <script src="app/core/router/router.module.js"></script>
+    <script src="app/core/router/routehelper.js"></script>
+    <script src="app/core/core.config.js"></script>
+    <script src="app/core/core.constants.js"></script>
+
+    <!--Data-->
+    <script src="app/data/data.module.js"></script>
+    <script src="app/data/services/post.factory.js"></script>
+
+    <!-- Layout -->
+    <script src="app/layout/layout.module.js"></script>
+    <script src="app/layout/shell.controller.js"></script>
+
+    <!--Components-->
+    <script src="app/components/components.module.js"></script>
+    <!--Home-->
+    <script src="app/components/home/home.module.js"></script>
+    <script src="app/components/home/config.router.js"></script>
+    <script src="app/components/home/home.controller.js"></script>
+    <!--Post-->
+    <script src="app/components/post/post.module.js"></script>
+    <script src="app/components/post/config.router.js"></script>
+    <script src="app/components/post/post.controller.js"></script>
+    <script src="app/components/post/post-details.controller.js"></script>
 </body>
 </html>

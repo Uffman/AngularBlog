@@ -1,0 +1,29 @@
+﻿<div class="container" data-ng-controller="Home as home">
+    <div ng-repeat="post in home.postsList">
+        <div class="row">
+            <div class="col-md-10 ">
+                <div class="post-preview">
+                    <a data-ng-href="#/post/d60eb3df-d240-4459-b5fc-53908be8b6fd">
+                        <h2 class="post-title">
+                           {{ post.title}}
+                        </h2>
+                        <h3 class="post-subtitle">
+                           {{ post.content }}
+                        </h3>
+                    </a>
+                    <p class="post-meta">
+                        Posted by <a href="#">{{ post.author}}</a> on {{post.createdDate}}
+                    </p>
+                </div>
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    <li class="next">
+                        <a href="#">Older Posts &rarr;</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
