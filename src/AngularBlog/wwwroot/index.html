@@ -10,9 +10,12 @@
     <!-- Bootstrap Core CSS -->
     <link href="lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Theme CSS -->
-    <link href="lib/css/clean-blog.css" rel="stylesheet">
+    <link href="styles/clean-blog.css" rel="stylesheet" />
     <link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
     <link href="lib/toastr/toastr.css" rel="stylesheet" />
+    <link href="lib/ng-dialog/css/ngDialog.css" rel="stylesheet" />
+    <link href="lib/ng-dialog/css/ngDialog-theme-default.css" rel="stylesheet" />
+    <link href="lib/summernote/dist/summernote.css" rel="stylesheet" />
     <!-- Custom Fonts -->
     <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
@@ -27,15 +30,19 @@
 <body>
     <div ng-include="'app/layout/shell.html'"></div>
 
-    <!-- Bootstrap Core JavaScript -->
-    <!--<script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>-->
     <!--vendor-->
     <script src="lib/jquery/dist/jquery.js"></script>
+    <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="lib/angular/angular.js"></script>
     <script src="lib/angular-route/angular-route.js"></script>
     <script src="lib/angular-sanitize/angular-sanitize.js"></script>
+    <script src="lib/summernote/dist/summernote.js"></script>
+    <script src="lib/angular-summernote/dist/angular-summernote.js"></script>
+    <script src="lib/ng-dialog/js/ngDialog.js"></script>
     <script src="app/app.module.js"></script>
     <script src="lib/toastr/toastr.js"></script>
+    <script src="lib/moment/min/moment.min.js"></script>
+    <script src="lib/angular-moment/angular-moment.js"></script>
     <!--endvendor-->
     <!-- Main -->
     <script src="app/app.module.js"></script>
@@ -68,5 +75,10 @@
     <script src="app/components/post/config.router.js"></script>
     <script src="app/components/post/post.controller.js"></script>
     <script src="app/components/post/post-details.controller.js"></script>
+    <!--Admin-->
+    <script src="app/components/admin/admin.module.js"></script>
+    <script src="app/components/admin/config.router.js"></script>
+    <script src="app/components/admin/admin.js"></script>
+<script src="app/components/admin/post-dialog.js"></script>
 </body>
 </html>

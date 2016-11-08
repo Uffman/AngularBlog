@@ -1,0 +1,26 @@
+﻿<article >
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <form>
+                    <div class="form-group">
+                        <label for="title">Title:</label>
+                        <input type="text" class="form-control" id="title" ng-model="post.title">
+                    </div>
+                    <div class="form-group">
+                        <label for="slug">Slug:</label>
+                        <input type="text" class="form-control" id="slug" ng-model="post.slug">
+                    </div>
+                    <div class="form-group">
+                        <label for="content">Content:</label>
+                        <div id="content" summernote ng-model="post.content"></div>
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox" ng-model="post.isPublished"> Publish</label>
+                    </div>
+                    <button type="submit" class="btn btn-default" ng-click="savePost(post)">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</article>

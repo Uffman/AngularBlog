@@ -18,6 +18,10 @@
         function activate() {
             PostFactory.getData().success(function (response) {
                 self.postsList = response;
+                self.postsList.forEach(function (post) {
+                    post.createdDate = moment(post.createdDate).format('DD.MM.YYYY HH:mm');
+                    post.modifiedDate = moment(post.modifiedDate).format('DD.MM.YYYY HH:mm');
+                });
                 logger.info('Activated Home View');
             });
         }

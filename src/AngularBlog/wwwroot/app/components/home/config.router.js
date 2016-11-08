@@ -13,6 +13,15 @@
     function getRoutes() {
         return [
             {
+                url: '/home',
+                config: {
+                    templateUrl: 'app/components/home/home.template.html',
+                    controller: 'Home',
+                    //controllerAs: 'home',
+                    title: 'home'
+                }
+            },
+            {
                 url: '/',
                 config: {
                     templateUrl: 'app/components/home/home.template.html',
@@ -21,6 +30,6 @@
                     title: 'home'
                 }
             }
-        ];
+        ];        
     }
 })();

@@ -5,7 +5,7 @@
         /*
          * Angular modules
          */
-        'ngRoute', 'ngSanitize',
+        'ngRoute', 'ngSanitize', 'summernote',
 
         // Custom modules 
         'core.logger',

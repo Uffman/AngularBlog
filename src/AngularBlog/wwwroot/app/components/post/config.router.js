@@ -15,7 +15,7 @@
             {
                 url: '/posts',
                 config: {
-                    templateUrl: 'app/components/post/post.html',
+                    templateUrl: 'app/components/post/posts.html',
                     controller: 'PostController',
                     //controllerAs: 'post',
                     title: 'Post'

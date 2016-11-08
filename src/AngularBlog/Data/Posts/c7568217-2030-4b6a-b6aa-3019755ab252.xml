@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<post>
+  <title>Prvi post</title>
+  <author>UserName</author>
+  <slug>test-slug</slug>
+  <content>&lt;p&gt;123123&lt;/p&gt;</content>
+  <createddate>2016-11-07T13:41:02.6718186Z</createddate>
+  <modifieddate>7. 11. 2016 18:40:26</modifieddate>
+  <comments></comments>
+  <ispublished>True</ispublished>
+</post>

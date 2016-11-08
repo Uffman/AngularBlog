@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Xml;
 using System.Xml.Linq;
 using AngularBlog.Interfaces;
 using AngularBlog.Model;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Razor.Text;
 
 namespace AngularBlog.Repositories
 {
@@ -29,10 +31,14 @@ namespace AngularBlog.Repositories
             {
                 Directory.CreateDirectory(folder);
             }
+            if (postsList.Any())
+            {
+                postsList = new List<Post>();
+            }
 
             foreach (string file in Directory.EnumerateFiles(folder, "*.xml", SearchOption.TopDirectoryOnly))
             {
-                XElement document = XElement.Load(file);
+                XElement document = XElement.Load(file, LoadOptions.None);
                 Post post = new Post()
                 {
                     Id = new Guid(Path.GetFileNameWithoutExtension(file)),
@@ -101,7 +107,7 @@ namespace AngularBlog.Repositories
             string newFile = Path.Combine(folder, item.Id + ".xml");
             item.ModifiedDate = DateTime.UtcNow;
 
-            XDocument newDocument = new XDocument(
+            XDocument newDocument = new XDocument(new XDeclaration("1.0", "utf-8", null),
                 new XElement("post",
                 new XElement("title", item.Title),
                 new XElement("author", item.Author),
@@ -115,6 +121,7 @@ namespace AngularBlog.Repositories
                 );
 
             XElement comments = newDocument.Element("comments");
+            
             foreach (Comment comment in item.Comments)
             {
                 comments.Add(
@@ -134,14 +141,33 @@ namespace AngularBlog.Repositories
                 postsList.Sort((p1, p2) => p2.CreatedDate.CompareTo(p1.CreatedDate));
             }
 
-            SaveXml(newDocument);
+            SaveXml(newDocument, newFile);
 
             return item;
         }
 
         public bool Update(Post item)
         {
-            throw new NotImplementedException();
+            if (item == null)
+            {
+                throw new ArgumentNullException("item");
+            }
+
+            string filePath = Path.Combine(folder, item.Id + ".xml"); 
+            TextReader reader = new StringReader(File.ReadAllText(filePath));
+            XDocument xDocument = XDocument.Load(reader);
+            XElement post = xDocument.Descendants("post").FirstOrDefault();
+            
+            post.Descendants("title").FirstOrDefault().Value = item.Title;
+            post.Descendants("slug").FirstOrDefault().Value = item.Slug;
+            post.Descendants("content").FirstOrDefault().Value = item.Content;
+            post.Descendants("modifieddate").FirstOrDefault().Value = DateTime.UtcNow.ToString();
+            post.Descendants("ispublished").FirstOrDefault().Value = item.IsPublished.ToString();
+
+            SaveXml(xDocument, filePath);
+
+            LoadData();
+            return true;
         }
 
         public bool DeleteById(int id)
@@ -175,11 +201,17 @@ namespace AngularBlog.Repositories
             return defaultValue;
         }
 
-        private void SaveXml(XDocument document)
+        private void SaveXml(XDocument document, string filePath)
         {
-            StringBuilder sb = new StringBuilder();
-            TextWriter tr = new StringWriter(sb);
-            document.Save(tr);
+            document.Declaration = new XDeclaration("1.0", "utf-8", null);
+            StringWriter writer = new Utf8StringWriter();
+            document.Save(writer, SaveOptions.None);
+            File.WriteAllText(filePath, writer.ToString());
         }
+    }
+
+    public class Utf8StringWriter : StringWriter
+    {
+        public override Encoding Encoding { get { return Encoding.UTF8; } }
     }
 }

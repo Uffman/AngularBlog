@@ -1,0 +1,26 @@
+﻿<div class="container" data-ng-controller="Admin as admin">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Slug</th>
+            <th>Author</th>
+            <th>Created Date</th>
+            <th>Modified Date</th>
+            <th>Is Published</th>
+            <th><button ng-click="admin.openEditDialog(null)">New</button></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="post in admin.postsList">
+            <td>{{ post.title }}</td>
+            <td>{{ post.slug }}</td>
+            <td>{{ post.author }}</td>
+            <td>{{ post.createdDate }}</td>
+            <td>{{ post.modifiedDate }}</td>
+            <td>{{ post.isPublished}}</td>
+            <td><button ng-click="admin.openEditDialog(post)">Edit</button></td>
+        </tr>
+        </tbody>
+    </table>
+</div>

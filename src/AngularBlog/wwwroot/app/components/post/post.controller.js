@@ -15,13 +15,11 @@
 
         activate();
 
-        function activate() {
-            logger.info('Activated Post View');
-            //PostFactory.getData().success(function (response) {
-            //    debugger;
-            //    self.postsList = response;
-            //    logger.info('Activated Post View');
-            //});
+        function activate() {            
+            PostFactory.getData().success(function (response) {            
+               self.postsList = response;
+               logger.info('Activated Post View');
+            });
         }
     }
 })();

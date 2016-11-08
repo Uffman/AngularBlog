@@ -4,6 +4,7 @@
     angular.module('app.components', [
         // Custom modules 
         'home',
-        'post'
+        'post',
+        'admin'
     ]);
 })();

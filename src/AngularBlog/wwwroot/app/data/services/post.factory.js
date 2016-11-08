@@ -50,7 +50,7 @@
             return $http(
                 {
                     method: 'PUT',
-                    url: apiUrl + '/' + post.Id,
+                    url: apiUrl + '/' + post.id,
                     data: post
                 });
         }

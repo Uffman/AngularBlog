@@ -16,6 +16,7 @@
         activate();
 
         function activate() {
+            debugger
             var id = $routeParams.id;
             PostFactory.getDataById(id).success(function (response) {
                 self.post = response;
