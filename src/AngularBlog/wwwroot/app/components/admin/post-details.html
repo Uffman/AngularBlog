@@ -1,0 +1,27 @@
+﻿<article ng-controller="AdminPostDetailsController as postCtrl">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10">
+                <form>
+                    <div class="form-group">
+                        <label for="title">Title:</label>
+                        <input type="text" class="form-control" id="title" ng-model="postCtrl.post.title">
+                    </div>
+                    <div class="form-group">
+                        <label for="slug">Slug:</label>
+                        <input type="text" class="form-control" id="slug" ng-model="postCtrl.post.slug">
+                    </div>
+                    <div class="form-group">
+                        <label for="content">Content:</label>
+                        <div id="content" summernote ng-model="postCtrl.post.content" editable="editable" editor="editor"></div>
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox" ng-model="postCtrl.post.isPublished"> Publish</label>
+                    </div>
+                    <button type="submit" class="btn btn-default" ng-click="postCtrl.savePost(postCtrl.post)">Save</button>
+                    <button type="submit" class="btn btn-default" ng-click="postCtrl.cancel()">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</article>

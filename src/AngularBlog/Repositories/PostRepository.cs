@@ -16,27 +16,29 @@ namespace AngularBlog.Repositories
     {
         private List<Post> postsList = new List<Post>();
         private readonly IHostingEnvironment _hostingEnvironment;
-        private readonly string folder;
+        public readonly string Folder;
+        public readonly string HostingEnvironmentPath;
 
         public PostRepository(IHostingEnvironment hostingEnvironment)
         {
             this._hostingEnvironment = hostingEnvironment;
-            folder = Path.Combine(this._hostingEnvironment.ContentRootPath, "Data", "Posts");
+            HostingEnvironmentPath = this._hostingEnvironment.ContentRootPath;
+            Folder = Path.Combine(this._hostingEnvironment.ContentRootPath, "Data", "Posts");
             LoadData();
         }
 
         private void LoadData()
         {
-            if (!Directory.Exists(folder))
+            if (!Directory.Exists(Folder))
             {
-                Directory.CreateDirectory(folder);
+                Directory.CreateDirectory(Folder);
             }
             if (postsList.Any())
             {
                 postsList = new List<Post>();
             }
 
-            foreach (string file in Directory.EnumerateFiles(folder, "*.xml", SearchOption.TopDirectoryOnly))
+            foreach (string file in Directory.EnumerateFiles(Folder, "*.xml", SearchOption.TopDirectoryOnly))
             {
                 XElement document = XElement.Load(file, LoadOptions.None);
                 Post post = new Post()
@@ -104,7 +106,7 @@ namespace AngularBlog.Repositories
 
         public Post Add(Post item)
         {
-            string newFile = Path.Combine(folder, item.Id + ".xml");
+            string newFile = Path.Combine(Folder, item.Id + ".xml");
             item.ModifiedDate = DateTime.UtcNow;
 
             XDocument newDocument = new XDocument(new XDeclaration("1.0", "utf-8", null),
@@ -142,7 +144,7 @@ namespace AngularBlog.Repositories
             }
 
             SaveXml(newDocument, newFile);
-
+            LoadData();
             return item;
         }
 
@@ -153,7 +155,7 @@ namespace AngularBlog.Repositories
                 throw new ArgumentNullException("item");
             }
 
-            string filePath = Path.Combine(folder, item.Id + ".xml"); 
+            string filePath = Path.Combine(Folder, item.Id + ".xml"); 
             TextReader reader = new StringReader(File.ReadAllText(filePath));
             XDocument xDocument = XDocument.Load(reader);
             XElement post = xDocument.Descendants("post").FirstOrDefault();
@@ -178,7 +180,7 @@ namespace AngularBlog.Repositories
         public bool Delete(Post item)
         {
             postsList.Remove(item);
-            string file = Path.Combine(folder, item.Id + ".xml");
+            string file = Path.Combine(Folder, item.Id + ".xml");
             File.Delete(file);
             return true;
         }
@@ -207,6 +209,16 @@ namespace AngularBlog.Repositories
             StringWriter writer = new Utf8StringWriter();
             document.Save(writer, SaveOptions.None);
             File.WriteAllText(filePath, writer.ToString());
+        }
+
+        public string GetFolder()
+        {
+            return Folder;
+        }
+
+        public string GetHostingEnviroment()
+        {
+            return HostingEnvironmentPath;
         }
     }
 

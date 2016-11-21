@@ -1,9 +1,12 @@
-﻿using AngularBlog.Interfaces;
+﻿using System.IO;
+using AngularBlog.Interfaces;
 using AngularBlog.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Serialization;
 
@@ -38,6 +41,12 @@ namespace AngularBlog
             app.UseDefaultFiles();
 
             app.UseStaticFiles();
+
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(env.ContentRootPath, @"Data")),
+                RequestPath = new PathString("/Data")
+            });
 
             app.UseMvc();
 

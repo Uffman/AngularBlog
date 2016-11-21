@@ -5,25 +5,24 @@
                 <div class="post-preview">
                     <a ng-href="#/post/{{post.id}}">
                         <h2 class="post-title">
-                           {{ post.title}}
+                            {{ post.title}}
                         </h2>
-                        <h3 class="post-subtitle">
-                           {{ post.content }}
-                        </h3>
+                        <div class="post-subtitle" ng-bind-html="home.allowHtml(post.content)"></div>
                     </a>
                     <p class="post-meta">
                         Posted by <a href="#">{{ post.author}}</a> on {{post.createdDate}}
                     </p>
                 </div>
                 <hr>
-                <!-- Pager -->
-                <ul class="pager">
-                    <li class="next">
-                        <a href="#">Older Posts &rarr;</a>
-                    </li>
-                </ul>
             </div>
         </div>
     </div>
+    <div class="row">
+        <!-- Pager -->
+        <!--<ul class="pager">
+            <li class="next">
+                <a href="#">Older Posts &rarr;</a>
+            </li>
+        </ul>-->
+    </div>
 </div>
-<hr>

@@ -1,26 +1,30 @@
 ﻿<div class="container" data-ng-controller="Admin as admin">
     <table class="table">
         <thead>
-        <tr>
-            <th>Title</th>
-            <th>Slug</th>
-            <th>Author</th>
-            <th>Created Date</th>
-            <th>Modified Date</th>
-            <th>Is Published</th>
-            <th><button ng-click="admin.openEditDialog(null)">New</button></th>
-        </tr>
+            <tr>
+                <th>Title</th>
+                <th>Slug</th>
+                <th>Author</th>
+                <th>Created Date</th>
+                <th>Modified Date</th>
+                <th>Is Published</th>
+                <!--<th><button ng-click="admin.openEditDialog(null)">New</button></th>-->
+                <th><a class="btn btn-default" ng-href="#/admin/post/new">New</a></th>
+            </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="post in admin.postsList">
-            <td>{{ post.title }}</td>
-            <td>{{ post.slug }}</td>
-            <td>{{ post.author }}</td>
-            <td>{{ post.createdDate }}</td>
-            <td>{{ post.modifiedDate }}</td>
-            <td>{{ post.isPublished}}</td>
-            <td><button ng-click="admin.openEditDialog(post)">Edit</button></td>
-        </tr>
+            <tr ng-repeat="post in admin.postsList">
+                <td>{{ post.title }}</td>
+                <td>{{ post.slug }}</td>
+                <td>{{ post.author }}</td>
+                <td>{{ post.createdDate }}</td>
+                <td>{{ post.modifiedDate }}</td>
+                <td>{{ post.isPublished}}</td>
+                <!--<td><button ng-click="admin.openEditDialog(post)">Edit</button></td>-->
+                <td><a class="btn btn-default" ng-href="#/admin/post/{{ post.id }}">Edit</a>
+                    <a class="btn btn-default" ng-click="admin.deletePost(post)">Delete</a>
+                </td>
+            </tr>
         </tbody>
     </table>
 </div>

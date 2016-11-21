@@ -13,12 +13,7 @@
         
         activate();
 
-        function activate() {
-            //debugger;
-            //var id = post.id;
-            //PostFactory.getDataById(id).success(function (response) {
-            //    self.post = response;
-            //});
+        function activate() {            
         }
 
         $scope.savePost = function (post) {
@@ -31,6 +26,14 @@
                     ngDialog.close();
                 });
             }
+        }
+
+        $scope.imageUpload = function (files) {
+            var imgNode = $('<img>').attr('src', 'https://assets-cdn.github.com/images/modules/dashboard/bootcamp/octocat_setup.png')[0];
+            $scope.editor.summernote('insertNode', imgNode);
+
+            console.log('image upload:', files);
+            console.log('image upload\'s editable:', $scope.editable);
         }
     }
 })();

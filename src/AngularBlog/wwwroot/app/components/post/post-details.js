@@ -5,9 +5,9 @@
         .module('post')
         .controller('PostDetailsController', PostDetailsController);
 
-    PostDetailsController.$inject = ['$location', '$routeParams', 'PostFactory'];
+    PostDetailsController.$inject = ['$location', '$routeParams', 'PostFactory', '$sce'];
 
-    function PostDetailsController($location, $routeParams, PostFactory) {
+    function PostDetailsController($location, $routeParams, PostFactory, $sce) {
         /* jshint validthis:true */
         var self = this;
         self.title = 'Post Details';
@@ -16,11 +16,14 @@
         activate();
 
         function activate() {
-            debugger
             var id = $routeParams.id;
             PostFactory.getDataById(id).success(function (response) {
                 self.post = response;
             });
         }
+
+        self.allowHtml = function (value) {
+            return $sce.trustAsHtml(value);
+        };
     }
 })();

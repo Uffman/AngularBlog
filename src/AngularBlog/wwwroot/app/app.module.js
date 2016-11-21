@@ -3,8 +3,7 @@
 
     angular.module('app',
     [
-        'core',
-        'app.data',
+        'core',        
 
         // Custom modules 
         'app.layout',

@@ -20,6 +20,15 @@
                     //controllerAs: 'home',
                     title: 'Admin'
                 }
+            },
+            {
+                url: '/admin/post/:id',
+                config: {
+                    templateUrl: 'app/components/admin/post-details.html',
+                    controller: 'AdminPostDetailsController',
+                    //controllerAs: 'posts',
+                    title: 'Post Details'
+                }
             }
         ];
     }

@@ -15,7 +15,7 @@
             {
                 url: '/home',
                 config: {
-                    templateUrl: 'app/components/home/home.template.html',
+                    templateUrl: 'app/components/home/home.html',
                     controller: 'Home',
                     //controllerAs: 'home',
                     title: 'home'
@@ -24,7 +24,7 @@
             {
                 url: '/',
                 config: {
-                    templateUrl: 'app/components/home/home.template.html',
+                    templateUrl: 'app/components/home/home.html',
                     controller: 'Home',
                     //controllerAs: 'home',
                     title: 'home'

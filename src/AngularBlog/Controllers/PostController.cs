@@ -8,7 +8,7 @@ using System.Web.Http;
 using AngularBlog.Interfaces;
 using AngularBlog.Model;
 using Microsoft.AspNetCore.Mvc;
-
+using AngularBlog.Handlers;
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace AngularBlog.Controllers
@@ -25,9 +25,17 @@ namespace AngularBlog.Controllers
 
         // GET: api/values
         [HttpGet]
-        public IEnumerable<Post> Get()
+        public IEnumerable<Post> Get(bool? isPublished)
         {
-            var list = _postRepository.GetAll();
+            List<Post> list;
+            if (isPublished != null && isPublished.Value)
+            {
+                list = _postRepository.GetAll().Where(p => p.IsPublished == isPublished.Value).ToList();
+            }
+            else
+            {
+                list = _postRepository.GetAll().ToList();
+            }
             return list;
         }
 
@@ -50,7 +58,9 @@ namespace AngularBlog.Controllers
                 throw new HttpResponseException(new HttpResponseMessage(HttpStatusCode.BadRequest));
             }
 
-            _postRepository.Add(post);
+           var folder = _postRepository.GetHostingEnviroment();
+           PostHandler.SaveFilesToDisk(post, folder);
+           _postRepository.Add(post);
         }
 
         [HttpPut("{id}")]
@@ -66,6 +76,8 @@ namespace AngularBlog.Controllers
                 throw new HttpResponseException(new HttpResponseMessage(HttpStatusCode.BadRequest));
             }
 
+            var folder = _postRepository.GetFolder();
+            PostHandler.SaveFilesToDisk(post, folder);
             _postRepository.Update(post);
         }
 

@@ -21,7 +21,7 @@
     core.config(configure);
     configure.$inject = ["$logProvider", "$routeProvider", "routehelperConfigProvider"];
 
-    function configure($logProvider, $routeProvider, routehelperConfigProvider) {
+    function configure($logProvider, $routeProvider, routehelperConfigProvider, exceptionHandlerProvider) {
         // turn debugging off/on (no info or warn)
         if ($logProvider.debugEnabled) {
             $logProvider.debugEnabled(true);
@@ -31,8 +31,11 @@
         routehelperConfigProvider.config.$routeProvider = $routeProvider;
         routehelperConfigProvider.config.docTitle = 'NG-Modular: ';
         var resolveAlways = { /* @ngInject */
-            ready: function () {
-                return true;
+            //ready: function () {
+            //    return true;
+            //}
+            ready: function (PostFactory) {               
+                return PostFactory.ready();
             }
             // ready: ['dataservice', function (dataservice) {
             //    return dataservice.ready();
@@ -41,6 +44,6 @@
         routehelperConfigProvider.config.resolveAlways = resolveAlways;
 
         // Configure the common exception handler
-        //exceptionHandlerProvider.configure(config.appErrorPrefix);
+       // exceptionHandlerProvider.configure(settings.appErrorPrefix);
     }
 })();

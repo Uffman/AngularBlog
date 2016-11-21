@@ -9,7 +9,9 @@
 
         // Custom modules 
         'core.logger',
-        'core.router'
+        'core.exception',
+        'core.router',
+        'app.data'
         // 3rd Party Modules
         
     ]);

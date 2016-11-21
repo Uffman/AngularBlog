@@ -16,6 +16,8 @@
     <link href="lib/ng-dialog/css/ngDialog.css" rel="stylesheet" />
     <link href="lib/ng-dialog/css/ngDialog-theme-default.css" rel="stylesheet" />
     <link href="lib/summernote/dist/summernote.css" rel="stylesheet" />
+    <link href="styles/site.css" rel="stylesheet" />
+
     <!-- Custom Fonts -->
     <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
@@ -39,7 +41,6 @@
     <script src="lib/summernote/dist/summernote.js"></script>
     <script src="lib/angular-summernote/dist/angular-summernote.js"></script>
     <script src="lib/ng-dialog/js/ngDialog.js"></script>
-    <script src="app/app.module.js"></script>
     <script src="lib/toastr/toastr.js"></script>
     <script src="lib/moment/min/moment.min.js"></script>
     <script src="lib/angular-moment/angular-moment.js"></script>
@@ -49,6 +50,9 @@
 
     <!-- Core -->
     <script src="app/core/core.module.js"></script>
+    <script src="app/core/exception/exception.module.js"></script>
+    <script src="app/core/exception/exception-handler.provider.js"></script>
+    <script src="app/core/exception/exception.js"></script>
     <script src="app/core/logger/logger.module.js"></script>
     <script src="app/core/logger/logger.factory.js"></script>
     <script src="app/core/router/router.module.js"></script>
@@ -59,26 +63,28 @@
     <!--Data-->
     <script src="app/data/data.module.js"></script>
     <script src="app/data/services/post.factory.js"></script>
+    <script src="app/data/services/dataservice.js"></script>
 
     <!-- Layout -->
     <script src="app/layout/layout.module.js"></script>
-    <script src="app/layout/shell.controller.js"></script>
+    <script src="app/layout/shell.js"></script>
 
     <!--Components-->
     <script src="app/components/components.module.js"></script>
     <!--Home-->
     <script src="app/components/home/home.module.js"></script>
     <script src="app/components/home/config.router.js"></script>
-    <script src="app/components/home/home.controller.js"></script>
+    <script src="app/components/home/home.js"></script>
     <!--Post-->
     <script src="app/components/post/post.module.js"></script>
     <script src="app/components/post/config.router.js"></script>
-    <script src="app/components/post/post.controller.js"></script>
-    <script src="app/components/post/post-details.controller.js"></script>
+    <script src="app/components/post/post.js"></script>
+    <script src="app/components/post/post-details.js"></script>
     <!--Admin-->
     <script src="app/components/admin/admin.module.js"></script>
     <script src="app/components/admin/config.router.js"></script>
     <script src="app/components/admin/admin.js"></script>
-<script src="app/components/admin/post-dialog.js"></script>
+    <script src="app/components/admin/post-dialog.js"></script>
+    <script src="app/components/admin/post-details.js"></script>
 </body>
 </html>
